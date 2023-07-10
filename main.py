@@ -69,8 +69,8 @@ def train(_class_):
     print(device)
 
     data_transform, gt_transform = get_data_transforms(image_size, image_size)
-    train_path = './mvtec/' + _class_ + '/train'
-    test_path = './mvtec/' + _class_
+    train_path = '/content/drive/MyDrive/mvtec_anomaly_detection' + _class_ + '/train'
+    test_path  = '/content/drive/MyDrive/mvtec_anomaly_detection' + _class_
     ckp_path = './checkpoints/' + 'wres50_'+_class_+'.pth'
     train_data = ImageFolder(root=train_path, transform=data_transform)
     test_data = MVTecDataset(root=test_path, transform=data_transform, gt_transform=gt_transform, phase="test")
