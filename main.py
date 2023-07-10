@@ -60,7 +60,7 @@ def loss_concat(a, b):
 
 def train(_class_):
     print(_class_)
-    epochs = 200
+    epochs = 10
     learning_rate = 0.005
     batch_size = 16
     image_size = 256
