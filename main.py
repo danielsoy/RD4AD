@@ -69,13 +69,15 @@ def train(_class_):
     print(device)
 
     data_transform, gt_transform = get_data_transforms(image_size, image_size)
-    train_path = '/content/drive/MyDrive/mvtec_anomaly_detection' + _class_ + '/train'
-    test_path  = '/content/drive/MyDrive/mvtec_anomaly_detection' + _class_
+    train_path = '/content/drive/MyDrive/mvtec_anomaly_detection/' + _class_ + '/train'
+    test_path  = '/content/drive/MyDrive/mvtec_anomaly_detection/' + _class_
     ckp_path = './checkpoints/' + 'wres50_'+_class_+'.pth'
     train_data = ImageFolder(root=train_path, transform=data_transform)
     test_data = MVTecDataset(root=test_path, transform=data_transform, gt_transform=gt_transform, phase="test")
     train_dataloader = torch.utils.data.DataLoader(train_data, batch_size=batch_size, shuffle=True)
     test_dataloader = torch.utils.data.DataLoader(test_data, batch_size=1, shuffle=False)
+
+    
 
     encoder, bn = wide_resnet50_2(pretrained=True)
     encoder = encoder.to(device)
